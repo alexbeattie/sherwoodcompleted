@@ -80,37 +80,16 @@ class Listing: Decodable, Encodable {
         var Photos: [PhotoDictionary]
         
         struct PhotoDictionary:Codable {
-            var Id: String?
-            var Name: String?
-            var Uri1600: String?
+            var Id: String
+            var Name: String
+            var Uri1600: String
         
         }
         
         
         
         
-            
         
-
-        
-        
-        
-        
-                //photo struct
-//            struct photoData: Codable {
-//                var D: photoResultsData
-//            }
-//            struct photoResultsData: Codable {
-//                var Results: [photoResults]
-//            }
-//            struct photoD: Codable {
-//                var Id: String
-//                //        var ResourceUri: String
-//                //        var Name: String
-//                //        var UriThumb: String
-//                var Uri1600: String
-//            }
-//        }
         
        
         
@@ -220,75 +199,23 @@ class Listing: Decodable, Encodable {
                             let newDecoder = JSONDecoder()
                             let newListing = try newDecoder.decode(listingData.self, from: data)
                             
-                                                        print(newListing.D.Results)
-                            
+                            //print(newListing.D.Results)
                             
                             DispatchQueue.main.async(execute: { () -> Void in
                                 completionHandler(newListing)
                             })
-                            var listingArray = [newListing.D.Results]
+                            var listingArray = [Listing]()
                             
-//                            for listing in newListing.D.Results {
-//                                
-//                                listingArray.append([listing])
-//                                
-//                                var myPhotoPass:String = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/listings/\(listing.Id)/photosAuthToken"
-//                                //print(myPhotoPass)
-//                                myPhotoPass.append(authToken)
-//                                //print(myPhotoPass)
-//                                let newApiSig = self.md5(myPhotoPass)
-//                                //print(newApiSig)
-//                                
-//                                let photoCall:String = "http://sparkapi.com/v1/listings/\(listing.Id)/photos?AuthToken=\(authToken)&ApiSig=\(newApiSig)"
-//                                //print(photoCall)
-//                                
-//                                let photoCallUrl = URL(string: photoCall)
-//                                var request = URLRequest(url: photoCallUrl!)
-//                                request.httpMethod = "GET"
-//                                request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-//                                request.addValue("SparkiOS", forHTTPHeaderField: "X-SparkApi-User-Agent")
-//                                let photoTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-//                                    guard let data = data else { return }
-//                                    //                                                    print(data)
-//                                    if let error = error {
-//                                        print(error)
-//                                    }
-//                                    do {
-//                                        
-//                                        let photoDecoder = JSONDecoder()
-//                                        let newPhotoCall = try photoDecoder.decode(photoData.self, from: data)
-//                                        //                                                        var newPhotos = [newPhotoCall.D.Results]
-//                                        print(newPhotoCall)
-//                                        //                                                        print(newPhotos)
-//                                        let newPhotos = [newPhotoCall.D.Results]
-//                                        print(newPhotos)
-//                                        //                                                        newPhotos.append(photo)
-//                                        //                                                        let photoDictionary = theId["photoResults"] as? [String:Any]
-//                                        //
-//                                        //                                                        let photo = [photoResults]()
-//                                        
-//                                        //                                                        photo.image = photoDiction
-//                                        
-//                                        //var photoArray = [photoData]()
-//                                        
-//                                        //                                                        photoArray.append(theId)
-//                                        //print(newPhotoCall.D.Results)
-//                                        // print(newPhotos)
-//                                        //                                                        for thePhoto in newPhotos {
-//                                        //
-//                                        //
-//                                        //                                                            let id = newPhotoCall.D.Results
-//                                        //                                                            let uri = [newPhotoCall.D.Results]
-//                                        //
-//                                        //                                                            print(uri[0])
-//                                        //                                                        }
-//                                    } catch let err {
-//                                        print(err)
-//                                    }
-//                                }
-//                                photoTask.resume()
-//                                //                                            }
-//                            }
+                            for photos in (listingArray) {
+                                print(photos)
+                                
+//                                let pic = photos.count
+                                
+                                
+                            }
+
+                            
+
                         } catch let err {
                             print(err)
                         }

@@ -16,7 +16,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     var listings: [Listing.listingResults]?
     
-    var photos: Listing.standardFields.PhotoDictionary?
+    var photos: [Listing.standardFields.PhotoDictionary]?
 //    var photos: [Listing.photoResults]?
 //    var token:Listing.resultsArr!
 //    let photo = [String: Any]()
@@ -31,29 +31,11 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 
             
 
-//            Listing.standardFields.fetchListing() {_ in
-//                self.photos = self.photos
-//
-//            }
+
             
-//        { (photos) -> () in
-//            //                print(photos)
-//            self.photos = photos.D.Results
-//            //                self.photos = listings.D.Results as? Array
-//            self.collectionView?.reloadData()
-//            print(photos.D.Results)
-//        }
             self.collectionView?.reloadData()
 
         }
-//        if let newPhotos = photos {
-//            self.photos = newPhotos
-//            print(newPhotos)
-//        }
-        //self.photos = [photos]
-//        DispatchQueue.main.async {
-//            self.collectionView?.reloadData()
-//        }
         
         navigationItem.title = "Sherwood Real Estate"
         
@@ -61,7 +43,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.dataSource = self
         collectionView?.delegate = self
-//        self.collectionView?.reloadData()
 
     }
     func showListingDetailController(_ listing: Listing.listingResults) {
@@ -165,7 +146,7 @@ class HomeCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Best New Apps"
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -175,7 +156,7 @@ class HomeCell: UICollectionViewCell {
         label.text = "400"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .center
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -195,8 +176,8 @@ class HomeCell: UICollectionViewCell {
             print(thePhoto)
         }
 
-        if let thumbnailImageUrl = listing?.StandardFields.Photos as? String {
-            imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+            imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
         }
     }
     func setupViews() {
