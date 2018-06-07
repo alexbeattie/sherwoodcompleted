@@ -29,10 +29,12 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
     
     var listing: Listing.listingResults? {
         didSet {
-//            if listing?.photos != nil {
-//                return
+            if listing?.StandardFields.Photos[0].Uri1600 != nil {
+                return
+            }
+//            if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+//                imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
 //            }
-            
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -227,9 +229,9 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
         let leftIconView = UIImageView()
         leftIconView.contentMode = .scaleAspectFill
         
-//        if let thumbnailImageUrl = listing?.photos?.first {
-//            leftIconView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
-//        }
+        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+            leftIconView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
+        }
         
         let newBounds = CGRect(x:0.0, y:0.0, width:54.0, height:54.0)
         leftIconView.bounds = newBounds
@@ -480,4 +482,4 @@ extension UIView {
 //
 //    }
 //}
-
+//

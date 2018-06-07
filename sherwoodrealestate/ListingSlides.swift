@@ -7,19 +7,21 @@
 //
 
 import UIKit
-//import SDWebImage
 
 class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var listings: [Listing]?
     
     var images:[String] = []
+//    var images:String?
     
-    var listing: Listing? {
+    var listing: Listing.listingResults? {
         didSet {
-//            self.images = (listing?.photos)!
-            print(images)
-            
+            self.images = [(listing?.StandardFields.Photos.first?.Uri1600)!]
+//            print(images)
+//            if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+//                imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
+//            }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -68,9 +70,9 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if let count = listing?.photos?.count {
-//            return count
-//        }
+        if let count = listing?.StandardFields.Photos[0].Uri1600.count {
+            return count
+        }
         return 0
     }
     
@@ -81,21 +83,21 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
         
         
         
-//        let url = listing!.photos![indexPath.row]
+        let url = self.images[indexPath.row]
         
-//        if let imageUrl = URL(string: url) {
-//            URLSession.shared.dataTask(with: URLRequest(url: imageUrl)) { (data, response, error) in
-//                if let data = data {
-//                    DispatchQueue.main.async {
-//                        cell.imageView.image = UIImage(data: data)
-//                    }
-//                } else {
-//                    DispatchQueue.main.async {
-//                        cell.imageView.image = nil
-//                    }
-//                }
-//                }.resume()
-//        }
+        if let imageUrl = URL(string: url) {
+            URLSession.shared.dataTask(with: URLRequest(url: imageUrl)) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = UIImage(data: data)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = nil
+                    }
+                }
+                }.resume()
+        }
         
         
         return cell
@@ -142,14 +144,23 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
             
             layer.masksToBounds = true
             
-//            addSubview(imageView)
-//            addConstraintsWithFormat("H:|[v0]|", views: imageView)
-//            addConstraintsWithFormat("V:|[v0]|", views: imageView)
+            addSubview(imageView)
+            addConstraintsWithFormat("H:|[v0]|", views: imageView)
+            addConstraintsWithFormat("V:|[v0]|", views: imageView)
         }
         
     }
     
 }
 
-
+extension String {
+    
+    subscript (r: CountableClosedRange<Int>) -> String {
+        get {
+            let startIndex =  self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
+            return String(self[startIndex...endIndex])
+        }
+    }
+}
 

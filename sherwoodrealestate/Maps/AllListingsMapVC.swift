@@ -17,7 +17,7 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
     private var listingAnnos:[ListingAnno] = [ListingAnno]()
     
     var mapView = MKMapView()
-    var listing: Listing?
+    var listing: Listing.listingResults?
     
     
     override func viewDidLoad() {

@@ -10,7 +10,7 @@ import MapKit
 import Contacts
 
 class ListingAnno: NSObject, MKAnnotation {
-    var listing: Listing?
+    var listing: Listing.listingResults?
     
     let title: String?
     let coordinate: CLLocationCoordinate2D

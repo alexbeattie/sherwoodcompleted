@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/Listing.swift"
-            timestampString = "550096434.652707"
+            filePath = "sherwoodrealestate/ListingSlides.swift"
+            timestampString = "550106526.865911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "fetchListing(_:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "listing"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/ListingSlides.swift"
+            timestampString = "550106526.866097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +41,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/ViewController.swift"
-            timestampString = "550096434.652855"
+            filePath = "sherwoodrealestate/ListingSlides.swift"
+            timestampString = "550106526.866192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "setupThumbNailImage()"
-            landmarkType = "7">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "listing"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sherwoodrealestate.ListingSlides.listing.didset : Swift.Optional&lt;sherwoodrealestate.Listing.listingResults&gt;"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwooddispatch-master-2/sherwoodrealestate/ListingSlides.swift"
+                  timestampString = "550106527.065231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "2505">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sherwoodrealestate.ListingSlides.listing.didset : Swift.Optional&lt;sherwoodrealestate.Listing.listingResults&gt;"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwooddispatch-master-2/sherwoodrealestate/ListingSlides.swift"
+                  timestampString = "550106527.068665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,14 +89,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/Listing.swift"
-            timestampString = "550096434.653636"
+            filePath = "sherwoodrealestate/ListingSlides.swift"
+            timestampString = "550106526.8662961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "fetchListing(_:)"
-            landmarkType = "7">
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "listing"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,62 +105,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/Listing.swift"
-            timestampString = "550096434.6537139"
+            filePath = "sherwoodrealestate/ListingSlides.swift"
+            timestampString = "550106526.8663779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "fetchListing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/Listing.swift"
-            timestampString = "550096434.653777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "fetchListing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/ViewController.swift"
-            timestampString = "550096434.653837"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "setupThumbNailImage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sherwoodrealestate/ViewController.swift"
-            timestampString = "550096434.6541311"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "setupThumbNailImage()"
-            landmarkType = "7">
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "listing"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sherwoodrealestate.ListingSlides.listing.didset : Swift.Optional&lt;sherwoodrealestate.Listing.listingResults&gt;"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwooddispatch-master-2/sherwoodrealestate/ListingSlides.swift"
+                  timestampString = "550106527.083599"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "2725">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sherwoodrealestate.ListingSlides.listing.didset : Swift.Optional&lt;sherwoodrealestate.Listing.listingResults&gt;"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwooddispatch-master-2/sherwoodrealestate/ListingSlides.swift"
+                  timestampString = "550106527.086917"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

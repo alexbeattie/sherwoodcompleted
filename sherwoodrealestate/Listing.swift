@@ -134,14 +134,14 @@ class Listing: Decodable, Encodable {
                     
                    // var myListingsPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken"
                     let myPhotoPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken\(authToken)_expandPhotos"
-                    
+                    let mySortPass  = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken\(authToken)_expandPhotos_orderby-ListPrice"
                     //myListingsPass.append(authToken)
                     //myPhotoPass.append(authToken)
                     
 //                    print(myListingsPass)
-                    print(myPhotoPass)
+//                    print(myPhotoPass)
 //                    print("The Pre MD5 /my/listings ApiSig is: " + myListingsPass)
-                    print("The Pre MD5 /my/listings?_expand=Photos ApiSig is: " + myPhotoPass)
+//                    print("The Pre MD5 /my/listings?_expand=Photos ApiSig is: " + myPhotoPass)
                     
                     //                    var filterQuery = "_orderby=-ListPrice"
                     //                    myListingsPass.append(filterQuery)
@@ -149,6 +149,7 @@ class Listing: Decodable, Encodable {
                     
 //                    let apiSig = self.md5(myListingsPass)
                     let photoApiSig = self.md5(myPhotoPass)
+                    let sortedApiSig = self.md5(mySortPass)
 //                    print("The FILTER Converted MD5 /my/listings: " + apiSig)
 //                    print("The Converted MD5 /my/listings: " + apiSig)
                     
@@ -156,6 +157,9 @@ class Listing: Decodable, Encodable {
 //                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
 //                    let photocall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)_expand=Photos&ApiSig=\(photoApiSig)"
                     let photocall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&ApiSig=\(photoApiSig)"
+                    let sortecall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&_orderby=-ListPrice&ApiSig=\(sortedApiSig)"
+//                                     http://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_filter=Not+MlsStatus+Eq++'Sold'&_orderby=-ListPrice&ApiSig=\(apiSig)
+                    
                     print(photocall)
                     
                     
@@ -181,7 +185,7 @@ class Listing: Decodable, Encodable {
 //                    let escapedCall = sortCall.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 
 //                    print("The Session Call is: " + call)
-                    let newCallUrl = URL(string: photocall)
+                    let newCallUrl = URL(string: sortecall)
                     var request = URLRequest(url: newCallUrl!)
                     request.httpMethod = "GET"
                     request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
@@ -204,15 +208,15 @@ class Listing: Decodable, Encodable {
                             DispatchQueue.main.async(execute: { () -> Void in
                                 completionHandler(newListing)
                             })
-                            var listingArray = [Listing]()
+                           // var listingArray = [Listing]()
                             
-                            for photos in (listingArray) {
-                                print(photos)
-                                
-//                                let pic = photos.count
-                                
-                                
-                            }
+//                            for photos in (listingArray) {
+//                                print(photos)
+//
+////                                let pic = photos.count
+//
+//
+//                            }
 
                             
 

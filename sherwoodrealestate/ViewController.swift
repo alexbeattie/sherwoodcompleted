@@ -172,9 +172,9 @@ class HomeCell: UICollectionViewCell {
 
     func setupThumbNailImage() {
         
-        if let thePhoto = listing?.StandardFields.Photos {
-            print(thePhoto)
-        }
+//        if let thePhoto = listing?.StandardFields.Photos {
+//            print(thePhoto)
+//        }
 
         if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
             imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
