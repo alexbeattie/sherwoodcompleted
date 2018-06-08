@@ -86,7 +86,7 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = listing?.StandardFields.Photos[0].Uri1600.count {
+        if let count = listing?.StandardFields.Photos.count {
             return count
         }
         return 0
