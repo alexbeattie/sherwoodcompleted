@@ -10,14 +10,30 @@ import UIKit
 
 class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var listings: [Listing]?
+    var listings: [Listing.listingResults]!
     
     var images:[String] = []
 //    var images:String?
-    
+    var emptyPhotoArray = [String]()
+
     var listing: Listing.listingResults? {
         didSet {
-            self.images = [(listing?.StandardFields.Photos.first?.Uri1600)!]
+
+            let mylisting = listings
+            //print("THE LISTING IS: \(theListing)")
+            for aListing in (listing?.StandardFields.Photos)! {
+                //                                print(aListing)
+               // for aPhoto in aListing.StandardFields.Photos {
+                    //                                    print(aPhoto.Uri1600)
+                    emptyPhotoArray.append(aListing.Uri1600)
+                    
+//                }
+                print(emptyPhotoArray)
+                self.images = emptyPhotoArray
+
+//                emptyPhotoArray.removeAll()
+
+            }
 //            print(images)
 //            if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
 //                imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))

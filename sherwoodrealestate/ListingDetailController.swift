@@ -29,7 +29,7 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
     
     var listing: Listing.listingResults? {
         didSet {
-            if listing?.StandardFields.Photos[0].Uri1600 != nil {
+            if listing?.StandardFields.Photos != nil {
                 return
             }
 //            if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
@@ -164,7 +164,7 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
             
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListingSlides
-//        cell.listing = [listing]
+        cell.listing = listing
         return cell
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

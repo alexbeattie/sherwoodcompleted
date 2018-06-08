@@ -219,21 +219,8 @@ class Listing: Decodable, Encodable {
 
                                 emptyPhotoArray.removeAll()
                             }
-//                            var photos = [newListing.D.Results]
-//                            print("The Photos are \(photos)")
-//                            guard let photosObj = photos["Photos"]  else { return nil}
-//                            let photos : [Photos]
                            
                                 
-                                //                            let photosDict = photos["Photos"] as! Dictionary<String, AnyObject>
-//                            prinr(photos)
-//                                    let photosDict = newListing.D.["Photos"] as! Dictionary<String, AnyObject>
-//                                    let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
-//                                    for photo in photosDictArray {
-//                                        let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
-//                                        self.imageUrlArray.append(postUrl)
-//                                    }
-//
                             
                             
                             DispatchQueue.main.async(execute: { () -> Void in
