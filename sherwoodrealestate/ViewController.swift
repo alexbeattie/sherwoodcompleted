@@ -15,8 +15,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     var newList:Listing!
     
     var listings: [Listing.listingResults]?
-    
-    var photos: [Listing.standardFields.PhotoDictionary]?
+//    let dict : Listing.standardFields.PhotoDictionary?
+    var photos : [Listing.standardFields.PhotoDictionary]?
+    var picture = [[String: Any]]()
 //    var photos: [Listing.photoResults]?
 //    var token:Listing.resultsArr!
 //    let photo = [String: Any]()
@@ -28,10 +29,11 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         Listing.standardFields.fetchListing { (listings) -> () in
             self.listings = listings.D.Results
             print(listings.D.Results)
+            
 
             
 
-
+            print(self.photos)
             
             self.collectionView?.reloadData()
 
@@ -101,9 +103,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 class HomeCell: UICollectionViewCell {
     var listing: Listing.listingResults? {
         didSet {
-            
+
             setupThumbNailImage()
-            if let thePhoto = listing?.StandardFields.Photos[0] {
+            
+            if let thePhoto = listing?.StandardFields.Photos {
                 print(thePhoto)
             }
             if let theAddress = listing?.StandardFields.UnparsedAddress {
@@ -171,14 +174,32 @@ class HomeCell: UICollectionViewCell {
     }()
 
     func setupThumbNailImage() {
-        
-//        if let thePhoto = listing?.StandardFields.Photos {
-//            print(thePhoto)
+//        let photosDict = photos["Photos"] as! Dictionary<String, AnyObject>
+//        let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
+//        for photo in photosDictArray {
+//            let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+//            self.imageUrlArray.append(postUrl)
 //        }
+
+        if let thePhoto = listing?.StandardFields.Photos {
+            let dict = [String: Any]()
+            print(thePhoto)
+            var newPic = thePhoto[0].Id
+            print(newPic)
+            for (index, keyValue) in thePhoto.enumerated() {
+                print("Dictionary key \(index) - Dictionary value \(keyValue)")
+                
+            }
+
+            print(dict)
+        }
 
         if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
             imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
         }
+//        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+//            imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
+//        }
     }
     func setupViews() {
         backgroundColor = UIColor.clear

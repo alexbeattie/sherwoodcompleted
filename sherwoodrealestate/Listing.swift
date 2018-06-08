@@ -203,11 +203,44 @@ class Listing: Decodable, Encodable {
                             let newDecoder = JSONDecoder()
                             let newListing = try newDecoder.decode(listingData.self, from: data)
                             
+//                            print(newPhotos)
                             //print(newListing.D.Results)
+                            var emptyPhotoArray = [String]()
+                            let theListing = newListing.D.Results
+                            //print("THE LISTING IS: \(theListing)")
+                            for aListing in (theListing) {
+//                                print(aListing)
+                                for aPhoto in aListing.StandardFields.Photos {
+//                                    print(aPhoto.Uri1600)
+                                    emptyPhotoArray.append(aPhoto.Uri1600)
+
+                                }
+                                print(emptyPhotoArray)
+
+                                emptyPhotoArray.removeAll()
+                            }
+//                            var photos = [newListing.D.Results]
+//                            print("The Photos are \(photos)")
+//                            guard let photosObj = photos["Photos"]  else { return nil}
+//                            let photos : [Photos]
+                           
+                                
+                                //                            let photosDict = photos["Photos"] as! Dictionary<String, AnyObject>
+//                            prinr(photos)
+//                                    let photosDict = newListing.D.["Photos"] as! Dictionary<String, AnyObject>
+//                                    let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
+//                                    for photo in photosDictArray {
+//                                        let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+//                                        self.imageUrlArray.append(postUrl)
+//                                    }
+//
+                            
                             
                             DispatchQueue.main.async(execute: { () -> Void in
                                 completionHandler(newListing)
                             })
+                        
+                            
                            // var listingArray = [Listing]()
                             
 //                            for photos in (listingArray) {
