@@ -9,38 +9,63 @@
 import MapKit
 import Contacts
 
-class ListingAnno: NSObject, MKAnnotation {
-    var listing: Listing.listingResults?
+class ListingAnno: NSObject, MKAnnotation, Codable {
+    var anno: Listing.standardFields?
     
-    let title: String?
+    //let title: String?
     let coordinate: CLLocationCoordinate2D
-    let locationName: String?
-    
-    init(title:String, coordinate: CLLocationCoordinate2D, locationName:String) {
-        self.title = title
+    enum CodingKeys: String, CodingKey {
+        case latitude, longitude, radius
+    }
+    init(title:String, coordinate: CLLocationCoordinate2D) {
+        //self.title = title
         self.coordinate = coordinate
-        self.locationName = locationName
         super.init()
     }
+    var title: String? {
     
-    class func fromDataArray(dictionary: [String:Any]!)->ListingAnno {
+        return nil
+        }
+    
+
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let latitude = try values.decode(Double.self, forKey: .latitude)
+        let longitude = try values.decode(Double.self, forKey: .longitude)
+        coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(coordinate.latitude, forKey: .latitude)
+        try container.encode(coordinate.longitude, forKey: .longitude)
+    }
+}
+     func fromDataArray(dictionary: [String:Any]!)->ListingAnno {
+
         var latitude:Double = 0.0
         var longitude:Double = 0.0
         var title = ""
-        let locationName = ""
-        if let theAddress = dictionary["address"] as? [String:Any]  {
-            if let fullAddress = theAddress["full"] as? String {
-                title = fullAddress
+
+        var listing: Listing.listingResults? {
+            didSet {
+                if let theAddress = listing?.StandardFields.UnparsedAddress {
+                    title = theAddress
+                }
+                if let theLng = listing?.StandardFields.Longitude {
+                    longitude = theLng
+                }
+                if let theLat = listing?.StandardFields.Latitude {
+                    latitude = theLat
+                }
+
+
             }
         }
-        let geo = dictionary["geo"] as? [String:Any]
-        let theLng = geo!["lng"] as? Double
-        let theLat = geo!["lat"] as? Double
-        longitude = theLng!
-        latitude = theLat!
-        let location2d:CLLocationCoordinate2D = CLLocationCoordinate2D.init(latitude: theLat!, longitude: theLng!)
-        return ListingAnno.init(title: title, coordinate: location2d, locationName: locationName)
+    
+        let location2d:CLLocationCoordinate2D = CLLocationCoordinate2D.init(latitude: (listing?.StandardFields.Latitude)!, longitude: (listing?.StandardFields.Longitude)!)
+        return ListingAnno.init(title: title, coordinate: location2d)
     }
-}
+
 
 

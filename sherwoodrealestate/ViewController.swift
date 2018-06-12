@@ -33,7 +33,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 
             
 
-            print(self.photos)
+//            print(self.photos)
             
             self.collectionView?.reloadData()
 
@@ -121,18 +121,6 @@ class HomeCell: UICollectionViewCell {
             
         }
     }
-//
-//    var photo: Listing.photoResults? {
-//        didSet {
-//            if let newPic = self.photo {
-//                self.photo = newPic
-//
-//            }
-//            self.setupThumbNailImage()
-//
-//        }
-//    }
-    
     
     
     
@@ -174,32 +162,12 @@ class HomeCell: UICollectionViewCell {
     }()
 
     func setupThumbNailImage() {
-//        let photosDict = photos["Photos"] as! Dictionary<String, AnyObject>
-//        let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
-//        for photo in photosDictArray {
-//            let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
-//            self.imageUrlArray.append(postUrl)
-//        }
 
-        if let thePhoto = listing?.StandardFields.Photos {
-            let dict = [String: Any]()
-            print(thePhoto)
-            var newPic = thePhoto[0].Id
-            print(newPic)
-            for (index, keyValue) in thePhoto.enumerated() {
-                print("Dictionary key \(index) - Dictionary value \(keyValue)")
-                
-            }
-
-            print(dict)
-        }
 
         if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
             imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
         }
-//        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
-//            imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
-//        }
+
     }
     func setupViews() {
         backgroundColor = UIColor.clear

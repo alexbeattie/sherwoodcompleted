@@ -12,19 +12,25 @@ import Contacts
 
 class AllListingsMapVC: UIViewController, MKMapViewDelegate {
     
-    
-    private var locationManager = CLLocationManager()
-    private var listingAnnos:[ListingAnno] = [ListingAnno]()
+    var anno:Listing.standardFields!
+    var locationManager = CLLocationManager()
+    var listingAnnos:[ListingAnno] = [ListingAnno]()
     
     var mapView = MKMapView()
-    var listing: Listing.listingResults?
+    var listing:Listing!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = mapView
         mapView.delegate = self
+        
+//        Listing.standardFields.fetchListing { (listing) in
+//            self.listingAnnos = self.listingAnnos
+//        }
+
         fetchListings()
+//        print(Listing.listingResults.self)
         
     }
     
@@ -83,35 +89,31 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
     
     func fetchListings() {
         
-        //        let url = URL(string: "http://localhost:8888/simplyrets/file.js")!
-        let url = URL(string: "http://artisanbranding.s3.amazonaws.com/file.js")!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard data != nil else{
-                return
-            }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! Array<Any>
-                
-                
-                DispatchQueue.main.async {
+
+        //var json = listingAnnos as Array<Any>
+        var json = listingAnnos as Array<Any>
+        json.append(listingAnnos)
+            print(json)
+        let listingAnno:ListingAnno = ListingAnno(title: anno.UnparsedAddress, coordinate: CLLocationCoordinate2D.init(latitude: anno.Latitude, longitude: anno.Longitude))
+        print(listingAnno)
                     for dictionary in json as! [[String:Any]] {
-                        //let dataDictionary = json
-                        let listingAnno:ListingAnno = ListingAnno.fromDataArray(dictionary: dictionary )
-                        self.listingAnnos.append(listingAnno)
-                        
-                        var thePoint = MKPointAnnotation()
-                        thePoint = MKPointAnnotation()
-                        thePoint.coordinate = listingAnno.coordinate
-                        thePoint.title = listingAnno.title
-                        thePoint.subtitle = listingAnno.locationName
-                        self.mapView.addAnnotation(thePoint)
+//                        //let dataDictionary = json
+                        let title = anno.UnparsedAddress
+                        let lat = anno.Latitude
+                        let lon = anno.Longitude
+                        let coordinate = CLLocationCoordinate2DMake(lat, lon)
+                        let listingAnnos:ListingAnno = ListingAnno(title: title, coordinate: coordinate)
+                        print(dictionary)
+//                        self.listingAnnos.append(listingAnno)
+//
+//                        var thePoint = MKPointAnnotation()
+//                        thePoint = MKPointAnnotation()
+//                        thePoint.coordinate = listingAnno.coordinate
+//                        thePoint.title = listingAnno.title
+//                        //thePoint.subtitle = listingAnno.locationName
+//                        self.mapView.addAnnotation(thePoint)
                     }
-                }
-            } catch let jsonError {
-                print(jsonError)
-            }
         }
-        task.resume()
+
     }
-}
 

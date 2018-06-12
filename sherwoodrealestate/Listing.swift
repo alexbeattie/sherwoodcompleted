@@ -132,65 +132,44 @@ class Listing: Decodable, Encodable {
                     
                     let authToken = listing.D.Results[0].AuthToken
                     
-                   // var myListingsPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken"
+                    var myListingsPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken"
                     let myPhotoPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken\(authToken)_expandPhotos"
                     let mySortPass  = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken\(authToken)_expandPhotos_orderby-ListPrice"
-                    //myListingsPass.append(authToken)
-                    //myPhotoPass.append(authToken)
+                    let myFilterPass = "uTqE_dbyYSx6R1LvonsWOApiKeyvc_c15909466_key_1ServicePath/v1/my/listingsAuthToken\(authToken)_expandPhotos_filterNot MlsStatus Eq 'Sold'_orderby-ListPrice"
                     
-//                    print(myListingsPass)
-//                    print(myPhotoPass)
-//                    print("The Pre MD5 /my/listings ApiSig is: " + myListingsPass)
-//                    print("The Pre MD5 /my/listings?_expand=Photos ApiSig is: " + myPhotoPass)
-                    
-                    //                    var filterQuery = "_orderby=-ListPrice"
-                    //                    myListingsPass.append(filterQuery)
-                    //                    print(myListingsPass)
-                    
-//                    let apiSig = self.md5(myListingsPass)
+//                    PropertyType Eq 'A'
+                    let apiSig = self.md5(myListingsPass)
                     let photoApiSig = self.md5(myPhotoPass)
                     let sortedApiSig = self.md5(mySortPass)
+                    let filteredApiSig = self.md5(myFilterPass)
 //                    print("The FILTER Converted MD5 /my/listings: " + apiSig)
 //                    print("The Converted MD5 /my/listings: " + apiSig)
                     
                     
 //                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
 //                    let photocall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)_expand=Photos&ApiSig=\(photoApiSig)"
+                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
                     let photocall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&ApiSig=\(photoApiSig)"
                     let sortecall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&_orderby=-ListPrice&ApiSig=\(sortedApiSig)"
-//                                     http://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_filter=Not+MlsStatus+Eq++'Sold'&_orderby=-ListPrice&ApiSig=\(apiSig)
-                    
-                    print(photocall)
-                    
-                    
-                    var myListingsPass = MY_LISTINGS_PASS
-                    
-                    myListingsPass.append(authToken)
-                    //print(myListingsPass)
-                  //  print("The Pre MD5 /my/listings ApiSig is: " + myListingsPass)
-                  
-//                    var filterQuery = "_orderby=-ListPrice"
-//                    myListingsPass.append(filterQuery)
-//                    print(myListingsPass)
-                    
-                    let apiSig = self.md5(myListingsPass)
-//                    print("The FILTER Converted MD5 /my/listings: " + apiSig)
-//                    print("The Converted MD5 /my/listings: " + apiSig)
-                    
-//                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
+                   
+                    let preFilteredCall = ("https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&_filter=Not MlsStatus Eq 'Sold'&_orderby=-ListPrice&ApiSig=\(filteredApiSig)")
+                    let space = "%20"
+                    let quote = "%27"
+                    let filteredCall = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_expand=Photos&_filter=Not\(space)MlsStatus\(space)Eq\(space)\(quote)Sold\(quote)&_orderby=-ListPrice&ApiSig=\(filteredApiSig)"
                     
                     
-                    let call = "https://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&ApiSig=\(apiSig)"
-//                    let sortCall = "http://sparkapi.com/v1/my/listings?AuthToken=\(authToken)&_orderby=-ListPrice&ApiSig=\(apiSig)"
-//                    let escapedCall = sortCall.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//                    var myListingsPass = MY_LISTINGS_PASS
+//                    myListingsPass.append(authToken)
 
-//                    print("The Session Call is: " + call)
-                    let newCallUrl = URL(string: sortecall)
+                    
+                    let newCallUrl = URL(string: "\(filteredCall)")
+//                    let filteredCall = newCallUrl.
+
                     var request = URLRequest(url: newCallUrl!)
                     request.httpMethod = "GET"
                     request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
                     request.addValue("SparkiOS", forHTTPHeaderField: "X-SparkApi-User-Agent")
-                    request.addValue("_expand", forHTTPHeaderField: "Photos")
+                  //  request.addValue("_expand", forHTTPHeaderField: "Photos")
                     let newTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                         guard let data = data else { return }
                         print(data)
@@ -204,7 +183,7 @@ class Listing: Decodable, Encodable {
                             let newListing = try newDecoder.decode(listingData.self, from: data)
                             
 //                            print(newPhotos)
-                            //print(newListing.D.Results)
+                            print(newListing.D.Results)
                             var emptyPhotoArray = [String]()
                             let theListing = newListing.D.Results
                             //print("THE LISTING IS: \(theListing)")
