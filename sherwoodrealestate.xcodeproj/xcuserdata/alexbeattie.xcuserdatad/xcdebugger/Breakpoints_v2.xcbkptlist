@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.117236"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.9285671"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.932585"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "1301">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.937492"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.1173249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.945137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.948156"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "1301">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.951326"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.117393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.1174591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.1175261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.968403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sherwoodrealestate.SettingsLauncher.handleDismiss(sherwoodrealestate.Setting) -&gt; ()"
+                  moduleName = "sherwoodrealestate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexbeattie/Downloads/sherwoodcompleted-alllistingsmap/sherwoodrealestate/SettingsLauncher.swift"
+                  timestampString = "551046299.97165"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sherwoodrealestate/SettingsLauncher.swift"
+            timestampString = "551064776.1178091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "handleDismiss(setting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
