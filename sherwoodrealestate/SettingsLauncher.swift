@@ -95,6 +95,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
                 self.homeController?.showControllerForSetting(setting)
             }
             if setting.name == .MapOfListings {
+
                 self.homeController?.showControllerForMap(setting: setting)
             }
             if setting.name == .WebSite {

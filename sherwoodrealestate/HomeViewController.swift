@@ -32,26 +32,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = false
         
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-//        imageView.contentMode = .scaleAspectFit
-//        let image = UIImage(named: "sherwood")
-//        imageView.image = image
-//        navigationItem.titleView = imageView
 
         Listing.standardFields.fetchListing { (listings) -> () in
             self.listings = listings.D.Results
-           // print(listings.D.Results)
             self.collectionView?.reloadData()
 
         }
         
-//        navigationController?.navigationBar.isTranslucent = false
-        
-        //let titleLabel = UILabel(frame: CGRect(x:0, y:0, width:view.frame.width - 32, height:view.frame.height))
-        //titleLabel.text = "Home"
-//        titleLabel.textColor = UIColor.white
-//        titleLabel.font = UIFont.systemFont(ofSize:20)
-        //navigationItem.titleView = titleLabel
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         imageView.contentMode = .scaleAspectFit
@@ -70,27 +57,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.contentInset = UIEdgeInsetsMake(-8, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(-8, 0, 0, 0)
 
-//        setupCollectionView()
+        //setupCollectionView()
         //setupMenuBar()
         setupNavBarButtons()
 
 
     }
-//    func setupCollectionView() {
-//        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.scrollDirection = .horizontal
-//            flowLayout.minimumLineSpacing = 0
-//        }
-//
-//        collectionView?.backgroundColor = UIColor.white
-//
-//        //        collectionView?.registerClass(VideoCell.self, forCellWithReuseIdentifier: "cellId")
-//        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-//
-    
-//
-//        collectionView?.isPagingEnabled = true
-//    }
+
     
     func setupNavBarButtons() {
 //        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
@@ -125,13 +98,22 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = UIColor.white
 //        dummySettingsViewController.navigationItem.title = setting.name.rawValue
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor(red: 66, green: 66, blue: 66, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 66, green: 66, blue: 66, alpha: 1)
+]
 //        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+    }
+    func setupBackBarButton() {
+        let barBtn = UIBarButtonItem()
+        barBtn.title = " "
+        barBtn.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = barBtn
     }
     func showControllerForMap(setting: Setting) {
         
         let mapVC = AllListingsMapVC()
+       setupBackBarButton()
+
         navigationController?.pushViewController(mapVC, animated: true)
         
         }
@@ -139,14 +121,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         controller.dismiss(animated: true, completion: nil)
     }
     func showControllerForSwitchAccount(setting: Setting) {
+        setupBackBarButton()
 //        print(123)
     }
     func showControllerForHelp(setting: Setting) {
         let layout = UICollectionViewFlowLayout()
+        setupBackBarButton()
         let aboutSherwoodVC = AboutSherwoodVC(collectionViewLayout: layout)
-        
-        
-//        listingDetailController.listing = listing
         
         
         navigationController?.pushViewController(aboutSherwoodVC, animated: true)
@@ -182,8 +163,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         
         listingDetailController.listing = listing
-        
-        
+//        let backItem = UIBarButtonItem()
+//        backItem.tintColor = UIColor(red: 66, green: 66, blue: 66, alpha: 1)
+//        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(listingDetailController, animated: true)
     }
     // MARK: - Home CollectionViewController
@@ -217,6 +199,11 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let listing = listings?[indexPath.item] {
+            let barBtn = UIBarButtonItem()
+            barBtn.title = ""
+            barBtn.tintColor = UIColor.black
+            navigationItem.backBarButtonItem = barBtn
+
             showListingDetailController(listing)
         }
     }

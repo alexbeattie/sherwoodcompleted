@@ -21,9 +21,23 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
     
     var homeController:HomeViewController?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UINavigationBar.appearance().tintColor = UIColor.black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:" ", style: .plain, target: nil, action: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+//        UINavigationBar.appearance().tintColor = UIColor(red: 66, green: 66, blue: 66, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.black
+
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "sherwood")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        
         self.view = mapView
         mapView.delegate = self
         let myCoordinate = CLLocationCoordinate2D(latitude:34.127980999999998 , longitude:-118.86794999999999 )
@@ -37,7 +51,8 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
 //        annotation.title = "test"
 
 
-        
+        navigationController?.navigationBar.tintColor = UIColor(red: 66, green: 66, blue: 66, alpha: 1)
+
 //        var lat = anno.Latitude
 //        var long = anno.Longitude
 //        print(lat,long)

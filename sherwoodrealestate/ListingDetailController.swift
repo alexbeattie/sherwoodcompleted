@@ -331,7 +331,7 @@ class TitleCell: BaseCell {
         addSubview(costLabel)
         
         addConstraintsWithFormat("H:|[v0]|", views: viewContainer)
-                addConstraintsWithFormat("V:|[v0(40)]|", views: viewContainer)
+        addConstraintsWithFormat("V:|[v0(40)]|", views: viewContainer)
         
         addConstraintsWithFormat("H:|[v0]|", views: nameLabel)
         addConstraintsWithFormat("V:|[v0]-8-|", views: nameLabel)
