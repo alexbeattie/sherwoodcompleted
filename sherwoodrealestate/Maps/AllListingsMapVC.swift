@@ -83,6 +83,8 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
                 view.pinTintColor = MKPinAnnotationView.purplePinColor()
                 view.canShowCallout = true
                 view.animatesDrop = true
+                view.pinTintColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 let leftButton = UIButton(type: .infoLight)
                 let rightButton = UIButton(type: .detailDisclosure)
@@ -93,7 +95,7 @@ class AllListingsMapVC: UIViewController, MKMapViewDelegate {
                 
 
             }
-            let leftIconView = UIImageView()
+            let leftIconView = CustomImageView()
             leftIconView.contentMode = .scaleAspectFill
             
             if let thumbnailImageUrl = ldvc?.listing?.StandardFields.Photos[0].Uri1600 {

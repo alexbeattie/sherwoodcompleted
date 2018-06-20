@@ -35,7 +35,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         Listing.standardFields.fetchListing { (listings) -> () in
             self.listings = listings.D.Results
-            self.collectionView?.reloadData()
+            DispatchQueue.main.async() {
+                self.collectionView?.reloadData()
+            }
 
         }
         
@@ -125,12 +127,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 //        print(123)
     }
     func showControllerForHelp(setting: Setting) {
-        let layout = UICollectionViewFlowLayout()
-        setupBackBarButton()
-        let aboutSherwoodVC = AboutSherwoodVC(collectionViewLayout: layout)
+
+//        let layout = UICollectionViewFlowLayout()
+//        setupBackBarButton()
+//        let aboutSherwoodVC = AboutSherwoodVC(collectionViewLayout: layout)
         
         
-        navigationController?.pushViewController(aboutSherwoodVC, animated: true)
+       // navigationController?.pushViewController(aboutSherwoodVC, animated: true)
 
     
     }
@@ -219,9 +222,9 @@ class HomeCell: UICollectionViewCell {
 
             setupThumbNailImage()
             
-            if let thePhoto = listing?.StandardFields.Photos {
-                print(thePhoto)
-            }
+//            if let thePhoto = listing?.StandardFields.Photos[0].Uri1024 {
+//                imageView.image
+//            }
             if let theAddress = listing?.StandardFields.UnparsedFirstLineAddress {
                 nameLabel.text = theAddress.uppercased()
             }
@@ -262,10 +265,10 @@ class HomeCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let imageView: UIImageView = {
-        let iv = UIImageView()
+    let imageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.image = UIImage(named:"pic")
-        iv.backgroundColor = UIColor.black
+//        iv.backgroundColor = UIColor.black
         iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.masksToBounds = true
@@ -278,13 +281,13 @@ class HomeCell: UICollectionViewCell {
     func setupThumbNailImage() {
 
 
-        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1024 {
             imageView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
         }
 
     }
     func setupViews() {
-        backgroundColor = UIColor.clear
+//        backgroundColor = UIColor.clear
 
         addSubview(imageView)
         addSubview(nameLabel)
@@ -309,18 +312,36 @@ class HomeCell: UICollectionViewCell {
 
 
 
+let imageCache = NSCache<AnyObject, AnyObject>()
 
-
-extension UIImageView {
+class CustomImageView: UIImageView {
+    var imageUrlString: String?
     func loadImageUsingUrlString(urlString: String) {
+        imageUrlString = urlString
+        
         let url = URL(string: urlString)
+        
+        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
+        
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             if error != nil {
                 print(error!)
                 return
             }
             DispatchQueue.main.async {
-                self.image = UIImage(data:data!)
+                let imageToCache = UIImage(data:data!)
+                
+                if self.imageUrlString == urlString {
+                    self.image = imageToCache
+                }
+                
+                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                
             }
             
         }).resume()

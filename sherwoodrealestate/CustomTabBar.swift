@@ -13,6 +13,9 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         let homeController = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let navigationController = UINavigationController(rootViewController: homeController)
         navigationController.title = "Home"

@@ -92,6 +92,8 @@ class Listing: Decodable, Encodable {
         struct PhotoDictionary:Codable {
             var Id: String
             var Name: String
+            var Uri800: String
+            var Uri1024: String
             var Uri1600: String
         
         }
@@ -136,8 +138,8 @@ class Listing: Decodable, Encodable {
                 do {
                     let decoder = JSONDecoder()
                     let listing = try decoder.decode(responseData.self, from: data)
-                    print(listing)
-                    print(listing.D.Results)
+                   // print(listing)
+                   // print(listing.D.Results)
                     
                     
                     let authToken = listing.D.Results[0].AuthToken
@@ -171,7 +173,7 @@ class Listing: Decodable, Encodable {
                   //  request.addValue("_expand", forHTTPHeaderField: "Photos")
                     let newTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                         guard let data = data else { return }
-                        print(data)
+                        //print(data)
                         if let error = error {
                             print(error)
                         }
@@ -180,44 +182,22 @@ class Listing: Decodable, Encodable {
                             
                             let newDecoder = JSONDecoder()
                             let newListing = try newDecoder.decode(listingData.self, from: data)
-                            
-                            print(newListing)
-                            print(newListing.D.Results)
                             var emptyPhotoArray = [String]()
                             let theListing = newListing.D.Results
-                            //print("THE LISTING IS: \(theListing)")
+
                             for aListing in (theListing) {
-//                                print(aListing)
+
                                 for aPhoto in aListing.StandardFields.Photos {
-//                                    print(aPhoto.Uri1600)
                                     emptyPhotoArray.append(aPhoto.Uri1600)
 
                                 }
-                                print(emptyPhotoArray)
+                               // print(emptyPhotoArray)
 
                                 emptyPhotoArray.removeAll()
                             }
-                           
-                                
-                            
-                            
                             DispatchQueue.main.async(execute: { () -> Void in
                                 completionHandler(newListing)
                             })
-                        
-                            
-                           // var listingArray = [Listing]()
-                            
-//                            for photos in (listingArray) {
-//                                print(photos)
-//
-////                                let pic = photos.count
-//
-//
-//                            }
-
-                            
-
                         } catch let err {
                             print(err)
                         }

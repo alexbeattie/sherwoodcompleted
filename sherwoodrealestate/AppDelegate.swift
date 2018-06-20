@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController(collectionViewLayout: layout))
+//        window?.rootViewController = CustomTabBarController()
+
 //        window?.tintColor = UIColor.black
 //        window?.backgroundColor = UIColor.yellow
         

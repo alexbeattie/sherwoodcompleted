@@ -27,7 +27,6 @@ extension UIView {
     }
 }
 
-let imageCache = NSCache<AnyObject, AnyObject>()
 
 //class CustomImageView: UIImageView {
 //    

@@ -12,7 +12,7 @@ import AVFoundation
 import MapKit
 import CoreLocation
 
-class ListingDetailController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate {
+class ListingDetailController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate, UIToolbarDelegate {
     let cellId = "cellId"
     let descriptionId = "descriptionId"
     let headerId = "headerId"
@@ -26,7 +26,6 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
     var region: MKCoordinateRegion!
     let locationManager = CLLocationManager()
     
-    
     var listing: Listing.listingResults? {
         didSet {
             if listing?.StandardFields.Photos != nil {
@@ -39,15 +38,20 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        var toolbar: UIToolbar!
+        toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.bounds.size.height - 84, width: self.view.bounds.size.width, height: 120.0))
+//        toolbar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.compose, target: self, action: Selector(("mail"))), UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: Selector(("add")))]
+        self.view.addSubview(toolbar)
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.hidesBottomBarWhenPushed = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
+
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         imageView.contentMode = .scaleAspectFit
@@ -127,16 +131,16 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
             cell.mapView.mapType = .standard
             cell.mapView.delegate = self
             if let lat = listing?.StandardFields.Latitude, let lng = listing?.StandardFields.Longitude {
-                
+
                 let location = CLLocationCoordinate2DMake(lat, lng)
                 let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, 27500.0, 27500.0)
                 cell.mapView.setRegion(coordinateRegion, animated: true)
-                
+                cell.mapView.centerCoordinate = location
                 let pin = MKPointAnnotation()
                 
                 
                 pin.coordinate = location
-                pin.title = listing?.StandardFields.UnparsedAddress
+                pin.title = listing?.StandardFields.UnparsedFirstLineAddress
                 if let listPrice = listing?.StandardFields.ListPrice {
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
@@ -146,7 +150,7 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
                 }
                 
                 cell.mapView.addAnnotation(pin)
-                cell.mapView.selectAnnotation(pin, animated: true)
+//                cell.mapView.selectAnnotation(pin, animated: true)
 
                 
             }
@@ -165,14 +169,15 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
+   
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let annoView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Default")
         annoView.pinTintColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        annoView.animatesDrop = true
+//        annoView.animatesDrop = true
         annoView.canShowCallout = true
         let swiftColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        annoView.centerOffset = CGPoint(x: 100, y: 400)
+//        annoView.centerOffset = CGPoint(x: 150, y: 150)
         annoView.pinTintColor = swiftColor
         
         // Add a RIGHT CALLOUT Accessory
@@ -185,10 +190,10 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
         annoView.rightCalloutAccessoryView = rightButton
         
         //Add a LEFT IMAGE VIEW
-        let leftIconView = UIImageView()
+        let leftIconView = CustomImageView()
         leftIconView.contentMode = .scaleAspectFill
         
-        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri1600 {
+        if let thumbnailImageUrl = listing?.StandardFields.Photos[0].Uri800 {
             leftIconView.loadImageUsingUrlString(urlString: (thumbnailImageUrl))
         }
         
@@ -209,7 +214,7 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
         let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
         
         let item = MKMapItem(placemark: placemark)
-        item.name = listing?.StandardFields.UnparsedAddress
+        item.name = listing?.StandardFields.UnparsedFirstLineAddress
         item.openInMaps (launchOptions: [MKLaunchOptionsMapTypeKey: 2,
                                          MKLaunchOptionsMapCenterKey:NSValue(mkCoordinate: placemark.coordinate),
                                          MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
@@ -272,7 +277,7 @@ class ListingDetailController: UICollectionViewController, UICollectionViewDeleg
         if indexPath.item == 3 {
             
             
-            return CGSize(width: view.frame.width, height: 200)
+            return CGSize(width: view.frame.width, height: 300)
             
         }
         return CGSize(width: view.frame.width, height: 300)

@@ -20,15 +20,16 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
         didSet {
 
             for aListing in (listing?.StandardFields.Photos)! {
-                    emptyPhotoArray.append(aListing.Uri1600)
-                print(emptyPhotoArray)
-                self.images = emptyPhotoArray
+                    emptyPhotoArray.append(aListing.Uri1024)
+                
+                    self.images = self.emptyPhotoArray
+                
 
             }
 
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
             
         }
     }
@@ -55,11 +56,7 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
-        //        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //        collectionView.automaticallyAdjustsScrollViewInsets = false
-        
-        
-        //        collectionView.contentInset = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
+       
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         addSubview(collectionView)
         addSubview(dividerLineView)
@@ -83,25 +80,27 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListingImageCell
         
-        
-        
-        
-        
+
         let url = self.images[indexPath.row]
-        
-        if let imageUrl = URL(string: url) {
-            URLSession.shared.dataTask(with: URLRequest(url: imageUrl)) { (data, response, error) in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        cell.imageView.image = UIImage(data: data)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        cell.imageView.image = nil
-                    }
-                }
-                }.resume()
+        if URL(string: url) != nil {
+            cell.imageView.loadImageUsingUrlString(urlString: (url))
         }
+
+        
+        
+//        if let imageUrl = URL(string: url) {
+//            URLSession.shared.dataTask(with: URLRequest(url: imageUrl)) { (data, response, error) in
+//                if let data = data {
+//                    DispatchQueue.main.async {
+//                        cell.imageView.image = UIImage(data: data)
+//                    }
+//                } else {
+//                    DispatchQueue.main.async {
+//                        cell.imageView.image = nil
+//                    }
+//                }
+//            }.resume()
+//        }
         
         
         return cell
@@ -120,8 +119,6 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
     
     
     class ListingImageCell: BaseCell {
-        //        var photos:[String] = []
-        //        var images = [String]()
         var listing:Listing.listingResults? {
             didSet {
             }
@@ -134,12 +131,11 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        var imageView: UIImageView = {
-            let iv = UIImageView()
+        var imageView: CustomImageView = {
+            let iv = CustomImageView()
             iv.contentMode = .scaleAspectFill
             iv.translatesAutoresizingMaskIntoConstraints = false
-                        iv.layer.masksToBounds = true
-//            iv.layer.addSublayer(CAGradientLayer)
+            iv.layer.masksToBounds = true
             iv.backgroundColor = UIColor.clear
             return iv
         }()
@@ -158,14 +154,14 @@ class ListingSlides: BaseCell, UICollectionViewDataSource, UICollectionViewDeleg
     
 }
 
-extension String {
-    
-    subscript (r: CountableClosedRange<Int>) -> String {
-        get {
-            let startIndex =  self.index(self.startIndex, offsetBy: r.lowerBound)
-            let endIndex = self.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
-            return String(self[startIndex...endIndex])
-        }
-    }
-}
+//extension String {
+//
+//    subscript (r: CountableClosedRange<Int>) -> String {
+//        get {
+//            let startIndex =  self.index(self.startIndex, offsetBy: r.lowerBound)
+//            let endIndex = self.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
+//            return String(self[startIndex...endIndex])
+//        }
+//    }
+//}
 
